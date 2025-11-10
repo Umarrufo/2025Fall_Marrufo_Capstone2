@@ -89,13 +89,14 @@ public class UserInterface {
     public void processGetMakePizza()
     {
         Scanner scanner = new Scanner(System.in);
+        Pizza.Builder builder = new Pizza.Builder();
 
         boolean isMakePizzaRunning = true;
 
         while (isMakePizzaRunning)
         {
             System.out.println("Please Select a Pizza Size: ");
-            int pizzaSize = scanner.nextInt();
+
 
             System.out.println("Please Select a Crust: ");
             int crust = scanner.nextInt();
@@ -113,10 +114,10 @@ public class UserInterface {
             int extraCheese = scanner.nextInt(); //for loop
 
             System.out.println("Please Select your Toppings: ");
-            // for loop
+
 
             System.out.println("Please Select your Sauces: ");
-            //for loop
+
 
             System.out.println("Please Select your Sides: ");
         }

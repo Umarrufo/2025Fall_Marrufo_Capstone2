@@ -13,12 +13,4 @@ public enum Topping
     PINEAPPLE,
     ANCHOVIES,
 
-    //Sauces
-    MARINARA,
-    ALFREDO,
-    PESTO,
-    BBQ,
-    BUFFALO_SAUCE,
-    OLIVE_OIL,
-
 }
