@@ -18,7 +18,8 @@ public class Pizza
     private final List<Sauce> sauces;
     private final List<Side> sides;
 
-    private Pizza(Builder builder) {
+    private Pizza(Builder builder)
+    {
         this.pizzaSize = builder.pizzaSize;
         this.crust = builder.crust;
         this.meats = builder.meats;
@@ -26,6 +27,34 @@ public class Pizza
         this.toppings = builder.toppings;
         this.sauces = builder.sauces;
         this.sides = builder.sides;
+    }
+
+    public PizzaSize getPizzaSize() {
+        return pizzaSize;
+    }
+
+    public Crust getCrust() {
+        return crust;
+    }
+
+    public List<Meat> getMeats() {
+        return meats;
+    }
+
+    public List<Cheese> getCheeses() {
+        return cheeses;
+    }
+
+    public List<Topping> getToppings() {
+        return toppings;
+    }
+
+    public List<Sauce> getSauces() {
+        return sauces;
+    }
+
+    public List<Side> getSides() {
+        return sides;
     }
 
     public static class Builder
@@ -38,57 +67,72 @@ public class Pizza
         private List<Sauce> sauces;
         private List<Side> sides;
 
-        public void setPizzaSize(PizzaSize pizzaSize) {
+        public Builder(PizzaSize pizzaSize, Crust crust, List<Meat> meats, List<Cheese> cheeses, List<Topping> toppings, List<Sauce> sauces, List<Side> sides) {
             this.pizzaSize = pizzaSize;
-        }
-
-        public void setCrust(Crust crust) {
             this.crust = crust;
-        }
-
-        public void setMeats(List<Meat> meats) {
             this.meats = meats;
-        }
-
-        public void setCheeses(List<Cheese> cheeses) {
             this.cheeses = cheeses;
-        }
-
-        public void setToppings(List<Topping> toppings) {
             this.toppings = toppings;
-        }
-
-        public void setSauces(List<Sauce> sauces) {
             this.sauces = sauces;
-        }
-
-        public void setSides(List<Side> sides) {
             this.sides = sides;
         }
+
+        public Builder() {
+
+        }
+
+        public Builder setPizzaSize(PizzaSize pizzaSize) {
+            this.pizzaSize = pizzaSize;
+            return this;
+        }
+
+        public Builder setCrust(Crust crust) {
+            this.crust = crust;
+            return this;
+        }
+
+        public Builder setMeats(List<Meat> meats) {
+            this.meats = meats;
+            return this;
+        }
+
+        public Builder setCheeses(List<Cheese> cheeses) {
+            this.cheeses = cheeses;
+            return this;
+        }
+
+        public Builder setToppings(List<Topping> toppings) {
+            this.toppings = toppings;
+            return this;
+        }
+
+        public Builder setSauces(List<Sauce> sauces) {
+            this.sauces = sauces;
+            return this;
+        }
+
+        public Builder setSides(List<Side> sides) {
+            this.sides = sides;
+            return this;
+        }
+
+        public Pizza build()
+        {
+            return new Pizza(this);
+        }
+
     }
 
-    @Override
-    public String toString() {
-        return "Pizza{" +
-                "pizzaSize=" + pizzaSize +
-                ", crust=" + crust +
-                ", meats=" + meats +
-                ", cheeses=" + cheeses +
-                ", toppings=" + toppings +
-                ", sauces=" + sauces +
-                ", sides=" + sides +
-                '}';
-    }
-
-    public double orderPrice() {
-        PizzaSizePrice pizzaSizePrice = new PizzaSizePrice();
-        CheesePrice cheesePrice = new CheesePrice();
-        MeatPrice meatPrice = new MeatPrice();
-        DrinkPrice drinkPrice = new DrinkPrice();
-
-        double total = pizzaSizePrice.getPrice() + cheesePrice.getPrice()
-                + meatPrice.getPrice() + drinkPrice.getPrice();
-
-        return total;
-    }
 }
+
+//public double orderPrice() {
+//        PizzaSizePrice pizzaSizePrice = new PizzaSizePrice();
+//        CheesePrice cheesePrice = new CheesePrice();
+//        MeatPrice meatPrice = new MeatPrice();
+//        DrinkPrice drinkPrice = new DrinkPrice();
+//
+//        double total = pizzaSizePrice.getPrice() + cheesePrice.getPrice()
+//                + meatPrice.getPrice() + drinkPrice.getPrice();
+//
+//        return total;
+//    }

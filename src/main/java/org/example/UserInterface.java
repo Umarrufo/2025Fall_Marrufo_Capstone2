@@ -1,37 +1,45 @@
 package org.example;
 
+import org.example.ENUMS.PizzaSize;
+
 import java.util.Scanner;
 
-public class UserInterface {
-    private Pizza pizza;
+public class UserInterface
+{
 
-    public UserInterface() {
+    public UserInterface()
+    {
         init();
     }
 
-    private void init() {
+    private void init()
+    {
 //        FileManager fileManager = FileManager();
 //        this.pizza = fileManager.getPizza;
     }
 
-    public void display() {
+    public void display()
+    {
         Scanner scanner = new Scanner(System.in);
 
         boolean isDisplayRunning = true;
 
-        while (isDisplayRunning) {
+        while (isDisplayRunning)
+        {
             System.out.println("\nPlease Choose an Option:");
             System.out.println("1)  Make an Order");
             System.out.println("2)  Exit");
 
             String mainMenuInput = scanner.nextLine();
 
-            if (mainMenuInput.isBlank()) {
+            if (mainMenuInput.isBlank())
+            {
                 System.out.println("Please type something in.");
                 continue;
             }
 
-            switch (mainMenuInput) {
+            switch (mainMenuInput)
+            {
                 case "1":
                     processGetMakeOrder();
                     break;
@@ -45,12 +53,14 @@ public class UserInterface {
         }
     }
 
-    public void processGetMakeOrder() {
+    public void processGetMakeOrder()
+    {
         Scanner scanner = new Scanner(System.in);
 
         boolean isMakeOrderRunning = true;
 
-        while (isMakeOrderRunning) {
+        while (isMakeOrderRunning)
+        {
             System.out.println("\nPlease choose an option:");
             System.out.println("1) Add Pizza");
             System.out.println("2) Add Drink");
@@ -59,14 +69,16 @@ public class UserInterface {
 
             String mainMenuInput = scanner.nextLine();
 
-            if (mainMenuInput.isBlank()) {
+            if (mainMenuInput.isBlank())
+            {
                 System.out.println("Please type something in.");
                 continue;
             }
 
-            switch (mainMenuInput) {
+            switch (mainMenuInput)
+            {
                 case "1":
-                    processGetMakePizza();
+                    processGetPizzaMaker();
                     break;
                 case "2":
                     processGetAddDrink();
@@ -86,17 +98,17 @@ public class UserInterface {
         }
     }
 
-    public void processGetMakePizza()
+    public void processGetPizzaMaker()
     {
         Scanner scanner = new Scanner(System.in);
         Pizza.Builder builder = new Pizza.Builder();
 
-        boolean isMakePizzaRunning = true;
+        boolean isPizzaMakerRunning = true;
 
-        while (isMakePizzaRunning)
+        while (isPizzaMakerRunning)
         {
             System.out.println("Please Select a Pizza Size: ");
-
+            builder.setPizzaSize(PizzaSize.valueOf(scanner.nextLine()));
 
             System.out.println("Please Select a Crust: ");
             int crust = scanner.nextInt();
