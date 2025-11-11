@@ -119,12 +119,14 @@ public class UserInterface
             builder.setMeats(List.of(Meat.valueOf(scanner.nextLine().toUpperCase())));
 
             System.out.println("Select Another Meat or Press (Enter) to Continue");
+            //Figure out how to charge more
             builder.setMeats(List.of(Meat.valueOf(scanner.nextLine().toUpperCase())));
 
             System.out.println("Please Select your Primary Cheese");
             builder.setCheeses(List.of(Cheese.valueOf(scanner.nextLine().toUpperCase())));
 
             System.out.println("Select Another Cheese or Press (Enter) to Continue");
+            //Figure out how to charge more
             builder.setCheeses(List.of(Cheese.valueOf(scanner.nextLine().toUpperCase())));
 
             System.out.println("Please Select your Toppings: ");
