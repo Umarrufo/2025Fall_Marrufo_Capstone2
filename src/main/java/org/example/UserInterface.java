@@ -1,7 +1,8 @@
 package org.example;
 
-import org.example.ENUMS.PizzaSize;
+import org.example.ENUMS.*;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface
@@ -66,6 +67,7 @@ public class UserInterface
             System.out.println("2) Add Drink");
             System.out.println("3) Add Garlic Knots");
             System.out.println("4) Checkout");
+            System.out.println("0) Cancel Order");
 
             String mainMenuInput = scanner.nextLine();
 
@@ -108,30 +110,32 @@ public class UserInterface
         while (isPizzaMakerRunning)
         {
             System.out.println("Please Select a Pizza Size: ");
-            builder.setPizzaSize(PizzaSize.valueOf(scanner.nextLine()));
+            builder.setPizzaSize(PizzaSize.valueOf(scanner.nextLine().toUpperCase()));
 
             System.out.println("Please Select a Crust: ");
-            int crust = scanner.nextInt();
+            builder.setCrust(Crust.valueOf(scanner.nextLine().toUpperCase()));
 
             System.out.println("Please Select your Primary Meat");
-            int meat = scanner.nextInt();
+            builder.setMeats(List.of(Meat.valueOf(scanner.nextLine().toUpperCase())));
 
-            System.out.println("Select Another Meat or Press (V) to Continue");
-            int extraMeat = scanner.nextInt(); //for loop
+            System.out.println("Select Another Meat or Press (Enter) to Continue");
+            builder.setMeats(List.of(Meat.valueOf(scanner.nextLine().toUpperCase())));
 
-            System.out.println("Please Select your Primary Meat");
-            int cheese = scanner.nextInt();
+            System.out.println("Please Select your Primary Cheese");
+            builder.setCheeses(List.of(Cheese.valueOf(scanner.nextLine().toUpperCase())));
 
-            System.out.println("Select Another Meat or Press (V) to Continue");
-            int extraCheese = scanner.nextInt(); //for loop
+            System.out.println("Select Another Cheese or Press (Enter) to Continue");
+            builder.setCheeses(List.of(Cheese.valueOf(scanner.nextLine().toUpperCase())));
 
             System.out.println("Please Select your Toppings: ");
-
+            builder.setToppings(List.of(Topping.valueOf(scanner.nextLine().toUpperCase())));
 
             System.out.println("Please Select your Sauces: ");
-
+            builder.setSauces(List.of(Sauce.valueOf(scanner.nextLine().toUpperCase())));
 
             System.out.println("Please Select your Sides: ");
+            builder.setSides(List.of(Side.valueOf(scanner.nextLine().toUpperCase())));
+
         }
     }
 
