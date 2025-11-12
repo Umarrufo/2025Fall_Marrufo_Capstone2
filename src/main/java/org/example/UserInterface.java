@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.ENUMS.*;
 
+import java.sql.SQLOutput;
 import java.util.List;
 import java.util.Scanner;
 
@@ -115,27 +116,27 @@ public class UserInterface
             System.out.println("Please Select a Crust: ");
             builder.setCrust(Crust.valueOf(scanner.nextLine().toUpperCase()));
 
-            System.out.println("Please Select your Primary Meat");
+            System.out.println("Please Select Your Primary Meat");
             builder.setMeats(List.of(Meat.valueOf(scanner.nextLine().toUpperCase())));
 
             System.out.println("Select Another Meat or Press (Enter) to Continue");
             //Figure out how to charge more
             builder.setMeats(List.of(Meat.valueOf(scanner.nextLine().toUpperCase())));
 
-            System.out.println("Please Select your Primary Cheese");
+            System.out.println("Please Select Your Primary Cheese");
             builder.setCheeses(List.of(Cheese.valueOf(scanner.nextLine().toUpperCase())));
 
             System.out.println("Select Another Cheese or Press (Enter) to Continue");
             //Figure out how to charge more
             builder.setCheeses(List.of(Cheese.valueOf(scanner.nextLine().toUpperCase())));
 
-            System.out.println("Please Select your Toppings: ");
+            System.out.println("Please Select Your Toppings: ");
             builder.setToppings(List.of(Topping.valueOf(scanner.nextLine().toUpperCase())));
 
-            System.out.println("Please Select your Sauces: ");
+            System.out.println("Please Select Your Sauces: ");
             builder.setSauces(List.of(Sauce.valueOf(scanner.nextLine().toUpperCase())));
 
-            System.out.println("Please Select your Sides: ");
+            System.out.println("Please Select Your Sides: ");
             builder.setSides(List.of(Side.valueOf(scanner.nextLine().toUpperCase())));
 
         }
@@ -143,7 +144,8 @@ public class UserInterface
 
     public void processGetAddDrink()
     {
-        //
+        System.out.println("Please Choose the Size of Your Drink");
+
     }
 
     public void processGetAddGarlicKnots()

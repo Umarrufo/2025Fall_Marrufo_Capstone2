@@ -1,10 +1,6 @@
 package org.example;
 
 import org.example.ENUMS.*;
-import org.example.PizzaPrice.CheesePrice;
-import org.example.PizzaPrice.DrinkPrice;
-import org.example.PizzaPrice.MeatPrice;
-import org.example.PizzaPrice.PizzaSizePrice;
 
 import java.util.List;
 
@@ -125,14 +121,3 @@ public class Pizza
 
 }
 
-//public double orderPrice() {
-//        PizzaSizePrice pizzaSizePrice = new PizzaSizePrice();
-//        CheesePrice cheesePrice = new CheesePrice();
-//        MeatPrice meatPrice = new MeatPrice();
-//        DrinkPrice drinkPrice = new DrinkPrice();
-//
-//        double total = pizzaSizePrice.getPrice() + cheesePrice.getPrice()
-//                + meatPrice.getPrice() + drinkPrice.getPrice();
-//
-//        return total;
-//    }
