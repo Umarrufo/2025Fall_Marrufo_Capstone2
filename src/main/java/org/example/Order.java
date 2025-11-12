@@ -1,10 +1,8 @@
 package org.example;
 
-import org.example.PizzaPrice.CheesePrice;
-import org.example.PizzaPrice.DrinkPrice;
-import org.example.PizzaPrice.MeatPrice;
-import org.example.PizzaPrice.PizzaSizePrice;
+import org.example.ENUMS.Side;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -14,18 +12,19 @@ public class Order
 {
     private LocalDate date;
     private LocalTime time;
-    private List<Pizza> pizzas;
-    private List<Drink> drinks;
+    private List<Pizza> pizzas = new ArrayList<>();
+    private List<Drink> drinks = new ArrayList<>();
     private int garlicKnots;
-    private double amount;
 
-    public Order(LocalDate date, LocalTime time, List<Pizza> pizzas, List<Drink> drinks, int garlicKnots, double amount) {
-        this.date = date;
-        this.time = time;
+    public Order(LocalDate date, LocalTime time, List<Pizza> pizzas, List<Drink> drinks, int garlicKnots) {
+        this.date = LocalDate.now();
+        this.time = LocalTime.now();
         this.pizzas = pizzas;
         this.drinks = drinks;
         this.garlicKnots = garlicKnots;
-        this.amount = amount;
+    }
+
+    public Order() {
     }
 
     public LocalDate getDate() {
@@ -68,14 +67,6 @@ public class Order
         this.garlicKnots = garlicKnots;
     }
 
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
     public void addPizza(Pizza pizza)
     {
         pizzas.add(pizza);
@@ -86,22 +77,18 @@ public class Order
         drinks.add(drink);
     }
 
-    public void addGarlicKnot()
+    public void addGarlicKnot(int amount)
     {
-        //
+        this.garlicKnots += amount;
     }
 
     public double orderPrice()
     {
-        PizzaSizePrice pizzaSizePrice = new PizzaSizePrice();
-        CheesePrice cheesePrice = new CheesePrice();
-        MeatPrice meatPrice = new MeatPrice();
-        DrinkPrice drinkPrice = new DrinkPrice();
+        var pizzaCost = pizzas.stream().mapToDouble(Pizza::getPrice).sum();
+        var drinkCost = drinks.stream().mapToDouble(Drink::getPrice).sum();
+        var garlicKnotsCost = garlicKnots * 1.5;
 
-        double total = pizzaSizePrice.getPrice() + cheesePrice.getPrice()
-                + meatPrice.getPrice() + drinkPrice.getPrice();
-
-        return total;
+        return pizzaCost + drinkCost + garlicKnotsCost;
     }
 
 }

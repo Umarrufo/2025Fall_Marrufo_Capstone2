@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class UserInterface
 {
+    private final Order order = new Order();
 
     public UserInterface()
     {
@@ -215,6 +216,10 @@ public class UserInterface
             System.out.println("Please Select Your Sides: ");
             builder.setSides(List.of(Side.valueOf(scanner.nextLine().toUpperCase())));
 
+            Pizza newPizza = builder.build();
+
+            order.addPizza(newPizza);
+
             isPizzaMakerRunning = false;
         }
     }
@@ -225,11 +230,21 @@ public class UserInterface
 
         boolean isAddDrinkRunning = true;
 
-        while (isAddDrinkRunning) {
+        while (isAddDrinkRunning)
+        {
+            System.out.println("------------------------------------------------------------");
+            System.out.printf("%-20s %-10s %-10s %-10s%n", "Other Products", "Small", "Medium", "Large");
+            System.out.println("------------------------------------------------------------");
             System.out.printf("%-20s %-15s %-15s %-15s%n", "Drinks", "2.00", "2.50", "3.00");
             System.out.println("------------------------------------------------------------");
 
             System.out.println("Please Choose the Size of Your Drink: ");
+            String drinkSize = scanner.nextLine().toUpperCase();
+
+            DrinkSize drink = DrinkSize.valueOf(drinkSize);
+            Drink newDrink = new Drink(drink);
+
+            order.addDrink(newDrink);
 
             isAddDrinkRunning = false;
         }
@@ -242,11 +257,15 @@ public class UserInterface
         boolean isAddGarlicKnotsRunning = true;
 
         while (isAddGarlicKnotsRunning) {
-            System.out.printf("%-20s %-15s %-15s %-15s%n", "Garlic Knots", "1.50", "", "");
+            System.out.printf("%-20s %-15s %-15s %-15s%n", "Garlic Knots", "1.50 Each", "", "");
             System.out.println("------------------------------------------------------------");
 
-            System.out.println("How Many Garlic Knots Would You Like?");
+            System.out.println("How many Garlic Knots would you Like?");
             int numOfGarlicKnots = scanner.nextInt();
+            scanner.nextLine(); // clear newline
+
+
+            order.addGarlicKnot(numOfGarlicKnots);
 
             isAddGarlicKnotsRunning = false;
 

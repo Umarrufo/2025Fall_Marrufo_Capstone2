@@ -2,17 +2,18 @@ package org.example;
 
 import org.example.ENUMS.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Pizza
 {
     private final PizzaSize pizzaSize;
     private final Crust crust;
-    private final List<Meat> meats;
-    private final List<Cheese> cheeses;
-    private final List<Topping> toppings;
-    private final List<Sauce> sauces;
-    private final List<Side> sides;
+    private List<Meat> meats = new ArrayList<>();
+    private List<Cheese> cheeses = new ArrayList<>();
+    private List<Topping> toppings = new ArrayList<>();
+    private List<Sauce> sauces = new ArrayList<>();
+    private List<Side> sides = new ArrayList<>();
 
     private Pizza(Builder builder)
     {
@@ -51,6 +52,11 @@ public class Pizza
 
     public List<Side> getSides() {
         return sides;
+    }
+
+    public double getPrice()
+    {
+
     }
 
     public static class Builder
