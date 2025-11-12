@@ -54,13 +54,10 @@ public class CheesePrice
                     case LARGE:
                         price = 2.25;
                         break;
+                    default:
+                        price = 0.0;
                 }
-                break;
-            default:
-                price = 0.0;
-                break;
         }
-
         return price;
     }
 }

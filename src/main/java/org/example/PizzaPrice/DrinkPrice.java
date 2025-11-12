@@ -38,7 +38,6 @@ public class DrinkPrice
             default:
                 price = 0;
         }
-
         return  price;
     }
 }

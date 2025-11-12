@@ -6,6 +6,10 @@ public class PizzaSizePrice
 {
     private PizzaSize pizzaSize;
 
+    public PizzaSizePrice(PizzaSize pizzaSize) {
+        this.pizzaSize = pizzaSize;
+    }
+
     public PizzaSizePrice() {
     }
 
@@ -29,12 +33,11 @@ public class PizzaSizePrice
                 price = 12;
                 break;
             case LARGE:
-                price = 16;
+                price = 16.5;
                 break;
             default:
                 price = 0;
         }
-
         return  price;
     }
 }

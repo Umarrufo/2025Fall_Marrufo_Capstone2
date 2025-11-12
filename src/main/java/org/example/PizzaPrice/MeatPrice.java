@@ -55,13 +55,10 @@ public class MeatPrice
                     case LARGE:
                         price = 3.0;
                         break;
+                    default:
+                        price = 0.0;
                 }
-                break;
-            default:
-                price = 0.0;
-                break;
         }
-
         return price;
     }
 }
