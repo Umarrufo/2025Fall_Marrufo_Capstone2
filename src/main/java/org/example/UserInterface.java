@@ -2,24 +2,15 @@ package org.example;
 
 import org.example.ENUMS.*;
 
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface
 {
-    private final Order order = new Order();
+    private Order order = new Order();
 
     public UserInterface()
     {
-        init();
-    }
-
-    private void init()
-    {
-//        FileManager fileManager = FileManager();
-//        this.pizza = fileManager.getPizza;
     }
 
     public void display()
@@ -93,9 +84,11 @@ public class UserInterface
                     break;
                 case "4":
                     processGetCheckout();
+                    isMakeOrderRunning = false;
                     break;
                 case "0":
                     processGetCancelOrder();
+                    break;
                 default:
                     System.out.println("Invalid Choice - Please Try Again");
 
@@ -112,7 +105,7 @@ public class UserInterface
 
         while (isPizzaMakerRunning)
         {
-            System.out.println("------------------------------------------------------------");
+            System.out.println("\n------------------------------------------------------------");
             System.out.printf("%-15s %-15s %-15s %-15s%n", "Pizza Prices", "8\" - Small", "12\" - Medium", "16\" - Large");
             System.out.println("------------------------------------------------------------");
             System.out.printf("%-15s %-15s %-15s %-15s%n", "Crust", "8.50", "12.00", "16.50");
@@ -128,8 +121,7 @@ public class UserInterface
             System.out.println("Please Select a Crust: ");
             builder.setCrust(Crust.valueOf(scanner.nextLine().toUpperCase()));
 
-            System.out.println(" ");
-            System.out.println("------------------------------------------------------------");
+            System.out.println("\n------------------------------------------------------------");
             System.out.printf("%-15s %-15s %-15s %-15s%n", "Toppings", "8\" - Small", "12\" - Medium", "16\" - Large");
             System.out.println("------------------------------------------------------------");
             System.out.printf("%-15s %-15s %-15s %-15s%n", "Meats", "1.00", "2.00", "3.00");
@@ -146,24 +138,14 @@ public class UserInterface
             System.out.println("Please Select Your Primary Meat:");
             builder.setMeats(List.of(Meat.valueOf(scanner.nextLine().toUpperCase())));
 
-            boolean extraMeatsRunning = true;
-            while (extraMeatsRunning)
+            System.out.println("Would you like Extra Meat?(Yes/No)");
+            String extraMeatInput = scanner.nextLine();
+            if(extraMeatInput.equalsIgnoreCase("Yes"))
             {
-                System.out.println("Select Another Meat or Press (Enter) to Continue");
-                String extraMeatInput = scanner.nextLine();
-                if(extraMeatInput.isBlank())
-                {
-                    extraMeatsRunning = false;
-                }
-                else
-                {
-                    builder.setMeats(List.of(Meat.valueOf(scanner.nextLine().toUpperCase())));
-                }
+                builder.setExtraMeat(true);
             }
 
-
-            System.out.println(" ");
-            System.out.println("------------------------------------------------------------");
+            System.out.println("\n------------------------------------------------------------");
             System.out.printf("%-15s %-15s %-15s %-15s%n", "Cheese", "8\" - Small", "12\" - Medium", "16\" - Large");
             System.out.println("------------------------------------------------------------");
             System.out.printf("%-15s %-15s %-15s %-15s%n", " ", ".75", "1.50", "2.25");
@@ -179,12 +161,14 @@ public class UserInterface
             System.out.println("Please Select Your Primary Cheese");
             builder.setCheeses(List.of(Cheese.valueOf(scanner.nextLine().toUpperCase())));
 
-            System.out.println("Select Another Cheese or Press (Enter) to Continue");
-            //Figure out how to charge more
-            builder.setCheeses(List.of(Cheese.valueOf(scanner.nextLine().toUpperCase())));
+            System.out.println("Would you like Extra Cheese?(Yes/No)");
+            String extraCheeseInput = scanner.nextLine();
+            if(extraCheeseInput.equalsIgnoreCase("Yes"))
+            {
+                builder.setExtraCheese(true);
+            }
 
-            System.out.println(" ");
-            System.out.println("------------------------------------------------------------");
+            System.out.println("\n------------------------------------------------------------");
             System.out.printf("%-20s %-15s %-15s %-15s%n", "Regular Toppings", "8\" - Small", "12\" - Medium", "16\" - Large");
             System.out.println("------------------------------------------------------------");
             System.out.printf("%-20s %-15s %-15s %-15s%n", " ", "Included", "Included", "Included");
@@ -202,8 +186,7 @@ public class UserInterface
             System.out.println("Please Select Your Toppings: ");
             builder.setToppings(List.of(Topping.valueOf(scanner.nextLine().toUpperCase())));
 
-            System.out.println(" ");
-            System.out.println("------------------------------------------------------------");
+            System.out.println("\n------------------------------------------------------------");
             System.out.printf("%-20s %-10s %-10s %-10s%n", "Sauces", "8\"", "12\"", "16\"");
             System.out.println("------------------------------------------------------------");
             System.out.printf("%-20s %-10s %-10s %-10s%n", " ", "Included", "Included", "Included");
@@ -213,19 +196,18 @@ public class UserInterface
             System.out.printf("%-20s%n", "- BBQ");
             System.out.printf("%-20s%n", "- Buffalo");
             System.out.printf("%-20s%n", "- Olive Oil");
-            System.out.println("------------------------------------------------------------\n");
+            System.out.println("------------------------------------------------------------");
 
             System.out.println("Please Select Your Sauces: ");
             builder.setSauces(List.of(Sauce.valueOf(scanner.nextLine().toUpperCase())));
 
-            System.out.println(" ");
-            System.out.println("------------------------------------------------------------");
+            System.out.println("\n------------------------------------------------------------");
             System.out.printf("%-20s %-10s %-10s %-10s%n", "Sides", "8\"", "12\"", "16\"");
             System.out.println("------------------------------------------------------------");
             System.out.printf("%-20s %-10s %-10s %-10s%n", " ", "Included", "Included", "Included");
-            System.out.printf("%-20s%n", "- red pepper");
-            System.out.printf("%-20s%n", "- parmesan");
-            System.out.println("------------------------------------------------------------\n");
+            System.out.printf("%-20s%n", "- Red Pepper");
+            System.out.printf("%-20s%n", "- Parmesan");
+            System.out.println("------------------------------------------------------------");
 
             System.out.println("Please Select Your Sides: ");
             builder.setSides(List.of(Side.valueOf(scanner.nextLine().toUpperCase())));
@@ -246,7 +228,7 @@ public class UserInterface
 
         while (isAddDrinkRunning)
         {
-            System.out.println("------------------------------------------------------------");
+            System.out.println("\n------------------------------------------------------------");
             System.out.printf("%-20s %-10s %-10s %-10s%n", "Other Products", "Small", "Medium", "Large");
             System.out.println("------------------------------------------------------------");
             System.out.printf("%-20s %-15s %-15s %-15s%n", "Drinks", "2.00", "2.50", "3.00");
@@ -276,22 +258,19 @@ public class UserInterface
 
             System.out.println("How many Garlic Knots would you Like?");
             int numOfGarlicKnots = scanner.nextInt();
-            scanner.nextLine(); // clear newline
+            scanner.nextLine();
 
 
             order.addGarlicKnot(numOfGarlicKnots);
 
             isAddGarlicKnotsRunning = false;
-
         }
     }
 
     public void processGetCheckout()
     {
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
-
-        System.out.println("Date: " + order.getDate());
-        System.out.println("Time: " + order.getTime().format(timeFormatter));
+        Scanner scanner = new Scanner(System.in);
+        FileManager fileManager = new FileManager();
 
         order.getPizzas().forEach(System.out::println);
 
@@ -300,10 +279,31 @@ public class UserInterface
         System.out.println("Garlic Knots: " + order.getGarlicKnots());
 
         System.out.println("Total: $" + order.orderPrice());
+
+        boolean checkOut = true;
+        while(checkOut)
+        {
+            System.out.println("Choose an Option:");
+            System.out.println("1) Confirm Order");
+            System.out.println("2) Cancel Order");
+            String checkOutInput = scanner.nextLine();
+            switch(checkOutInput)
+            {
+                case "1":
+                    fileManager.saveOrder(order);
+                    order = new Order();
+                    checkOut = false;
+                    break;
+                case "2":
+                    processGetCancelOrder();
+                    checkOut = false;
+                    break;
+            }
+        }
     }
 
     public void processGetCancelOrder()
     {
-        //
+        order = new Order();
     }
 }

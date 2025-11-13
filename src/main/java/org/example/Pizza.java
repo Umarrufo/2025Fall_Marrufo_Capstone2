@@ -13,7 +13,9 @@ public class Pizza
     private final PizzaSize pizzaSize;
     private final Crust crust;
     private List<Meat> meats = new ArrayList<>();
+    private final boolean extraMeat;
     private List<Cheese> cheeses = new ArrayList<>();
+    private final boolean extraCheese;
     private List<Topping> toppings = new ArrayList<>();
     private List<Sauce> sauces = new ArrayList<>();
     private List<Side> sides = new ArrayList<>();
@@ -23,7 +25,9 @@ public class Pizza
         this.pizzaSize = builder.pizzaSize;
         this.crust = builder.crust;
         this.meats = builder.meats;
+        this.extraMeat = builder.extraMeat;
         this.cheeses = builder.cheeses;
+        this.extraCheese = builder.extraCheese;
         this.toppings = builder.toppings;
         this.sauces = builder.sauces;
         this.sides = builder.sides;
@@ -41,8 +45,16 @@ public class Pizza
         return meats;
     }
 
+    public boolean isExtraMeat() {
+        return extraMeat;
+    }
+
     public List<Cheese> getCheeses() {
         return cheeses;
+    }
+
+    public boolean isExtraCheese() {
+        return extraCheese;
     }
 
     public List<Topping> getToppings() {
@@ -61,54 +73,42 @@ public class Pizza
     {
         double total = 0;
 
-        PizzaSizePrice pizzaSizePrice = new PizzaSizePrice(pizzaSize);
-        total += pizzaSizePrice.getPrice();
+        total += new PizzaSizePrice(pizzaSize).getPrice();
 
-        for (int i = 0; i < meats.size(); i++)
+        Meat firstMeat = meats.get(0);
+        total += new MeatPrice(firstMeat,pizzaSize).getPrice();
+
+        if(extraMeat)
         {
-            MeatPrice meatPrice = new MeatPrice(meats.get(i), pizzaSize);
-            if (i == 0)
-            {
-                total += meatPrice.getPrice();
-            }
-            else
-            {
-                switch (pizzaSize) {
-                    case SMALL:
-                        total += 0.5;
-                        break;
-                    case MEDIUM:
-                        total += 1.0;
-                        break;
-                    case LARGE:
-                        total += 1.5;
-                        break;
-                }
+            switch (pizzaSize) {
+                case SMALL:
+                    total += 0.5;
+                    break;
+                case MEDIUM:
+                    total += 1.0;
+                    break;
+                case LARGE:
+                    total += 1.5;
+                    break;
             }
         }
 
+        Cheese firstCheese = cheeses.get(0);
+        total += new CheesePrice(firstCheese,pizzaSize).getPrice();
 
-        for (int i = 0; i < cheeses.size(); i++)
+        if(extraCheese)
         {
-            CheesePrice cheesePrice = new CheesePrice(cheeses.get(i), pizzaSize);
-            if (i == 0)
+            switch (pizzaSize)
             {
-                total += cheesePrice.getPrice();
-            }
-            else
-            {
-                switch (pizzaSize)
-                {
-                    case SMALL:
-                        total += 0.5;
-                        break;
-                    case MEDIUM:
-                        total += 1.0;
-                        break;
-                    case LARGE:
-                        total += 1.5;
-                        break;
-                }
+                case SMALL:
+                    total += 0.3;
+                    break;
+                case MEDIUM:
+                    total += 0.6;
+                    break;
+                case LARGE:
+                    total += 0.9;
+                    break;
             }
         }
         return total;
@@ -121,11 +121,14 @@ public class Pizza
         return "Pizza(s):\n"
                 + "Pizza Size: " + pizzaSize
                 + "\nCrust Type: " + crust
-                + "\nMeat(s): " + meats
-                + "\nCheese(s): " + cheeses
-                + "\nTopping(s) " + toppings
-                + "\nSauce(s) " + sauces
-                + "\nSide(s) " + sides;
+                + "\nMeat: " + meats
+                + "\nExtra Meats: " + extraMeat
+                + "\nCheese: " + cheeses
+                + "\nExtra Cheese: " + extraCheese
+                + "\nTopping(s): " + toppings //Loop through toppings
+                + "\nSauce: " + sauces
+                + "\nSide: " + sides
+                + "\n";
     }
 
     public static class Builder
@@ -133,65 +136,72 @@ public class Pizza
         private PizzaSize pizzaSize;
         private Crust crust;
         private List<Meat> meats;
+        private boolean extraMeat;
         private List<Cheese> cheeses;
+        private boolean extraCheese;
         private List<Topping> toppings;
         private List<Sauce> sauces;
         private List<Side> sides;
 
-        public Builder(PizzaSize pizzaSize, Crust crust, List<Meat> meats, List<Cheese> cheeses, List<Topping> toppings, List<Sauce> sauces, List<Side> sides) {
+        public Builder(PizzaSize pizzaSize, Crust crust, List<Meat> meats, boolean extraMeat, List<Cheese> cheeses, boolean extraCheese, List<Topping> toppings, List<Sauce> sauces, List<Side> sides) {
             this.pizzaSize = pizzaSize;
             this.crust = crust;
             this.meats = meats;
+            this.extraMeat = extraMeat;
             this.cheeses = cheeses;
+            this.extraCheese = extraCheese;
             this.toppings = toppings;
             this.sauces = sauces;
             this.sides = sides;
         }
 
         public Builder(){
-
         }
 
-        public Builder setPizzaSize(PizzaSize pizzaSize) {
+        public void setPizzaSize(PizzaSize pizzaSize) {
             this.pizzaSize = pizzaSize;
-            return this;
         }
 
-        public Builder setCrust(Crust crust) {
+        public void setCrust(Crust crust) {
             this.crust = crust;
-            return this;
         }
 
-        public Builder setMeats(List<Meat> meats) {
+        public void setMeats(List<Meat> meats) {
             this.meats = meats;
-            return this;
         }
 
-        public Builder setCheeses(List<Cheese> cheeses) {
+        public void setExtraMeat(boolean extraMeat) {
+            this.extraMeat = extraMeat;
+        }
+
+        public void setCheeses(List<Cheese> cheeses) {
             this.cheeses = cheeses;
-            return this;
         }
 
-        public Builder setToppings(List<Topping> toppings) {
+        public void setExtraCheese(boolean extraCheese) {
+            this.extraCheese = extraCheese;
+        }
+
+        public void addToppings(Topping topping)
+        {
+            this.toppings.add(topping);
+        }
+
+        public void setToppings(List<Topping> toppings) {
             this.toppings = toppings;
-            return this;
         }
 
-        public Builder setSauces(List<Sauce> sauces) {
+        public void setSauces(List<Sauce> sauces) {
             this.sauces = sauces;
-            return this;
         }
 
-        public Builder setSides(List<Side> sides) {
+        public void setSides(List<Side> sides) {
             this.sides = sides;
-            return this;
         }
 
         public Pizza build()
         {
             return new Pizza(this);
         }
-
     }
 }
-
