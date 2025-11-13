@@ -274,7 +274,8 @@ public class UserInterface
 
     public void processGetCheckout()
     {
-        //
+        System.out.println("Your Order:");
+        System.out.println("Pizza: ");
     }
 
     public void processGetCancelOrder()

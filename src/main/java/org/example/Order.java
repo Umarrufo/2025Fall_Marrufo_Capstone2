@@ -14,13 +14,15 @@ public class Order
     private LocalTime time;
     private List<Pizza> pizzas = new ArrayList<>();
     private List<Drink> drinks = new ArrayList<>();
+    private List<Side> sides = new ArrayList<>();
     private int garlicKnots;
 
-    public Order(LocalDate date, LocalTime time, List<Pizza> pizzas, List<Drink> drinks, int garlicKnots) {
-        this.date = LocalDate.now();
-        this.time = LocalTime.now();
+    public Order(LocalDate date, LocalTime time, List<Pizza> pizzas, List<Drink> drinks, List<Side> sides, int garlicKnots) {
+        this.date = date;
+        this.time = time;
         this.pizzas = pizzas;
         this.drinks = drinks;
+        this.sides = sides;
         this.garlicKnots = garlicKnots;
     }
 
@@ -59,6 +61,14 @@ public class Order
         this.drinks = drinks;
     }
 
+    public List<Side> getSides() {
+        return sides;
+    }
+
+    public void setSides(List<Side> sides) {
+        this.sides = sides;
+    }
+
     public int getGarlicKnots() {
         return garlicKnots;
     }
@@ -90,7 +100,6 @@ public class Order
 
         return pizzaCost + drinkCost + garlicKnotsCost;
     }
-
 }
 
 

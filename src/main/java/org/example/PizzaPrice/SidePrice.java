@@ -24,12 +24,6 @@ public class SidePrice
         double price;
         switch (sideItem)
         {
-            case RED_PEPPER:
-                price = 0;
-                break;
-            case PARMESAN:
-                price = 0;
-                break;
             case GARLIC_KNOTS:
                 price = 1.5;
                 break;

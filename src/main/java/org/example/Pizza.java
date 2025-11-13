@@ -1,6 +1,9 @@
 package org.example;
 
 import org.example.ENUMS.*;
+import org.example.PizzaPrice.CheesePrice;
+import org.example.PizzaPrice.MeatPrice;
+import org.example.PizzaPrice.PizzaSizePrice;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +59,59 @@ public class Pizza
 
     public double getPrice()
     {
+        double total = 0;
+
+        PizzaSizePrice pizzaSizePrice = new PizzaSizePrice(pizzaSize);
+        total += pizzaSizePrice.getPrice();
+
+        for (int i = 0; i < meats.size(); i++)
+        {
+            MeatPrice meatPrice = new MeatPrice(meats.get(i), pizzaSize);
+            if (i == 0)
+            {
+                total += meatPrice.getPrice();
+            }
+            else
+            {
+                switch (pizzaSize) {
+                    case SMALL:
+                        total += 0.5;
+                        break;
+                    case MEDIUM:
+                        total += 1.0;
+                        break;
+                    case LARGE:
+                        total += 1.5;
+                        break;
+                }
+            }
+        }
+
+
+        for (int i = 0; i < cheeses.size(); i++)
+        {
+            CheesePrice cheesePrice = new CheesePrice(cheeses.get(i), pizzaSize);
+            if (i == 0)
+            {
+                total += cheesePrice.getPrice();
+            }
+            else
+            {
+                switch (pizzaSize)
+                {
+                    case SMALL:
+                        total += 0.5;
+                        break;
+                    case MEDIUM:
+                        total += 1.0;
+                        break;
+                    case LARGE:
+                        total += 1.5;
+                        break;
+                }
+            }
+        }
+        return total;
 
     }
 
