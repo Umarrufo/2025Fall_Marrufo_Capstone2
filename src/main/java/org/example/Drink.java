@@ -41,4 +41,10 @@ public class Drink
         }
         return  price;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Drink(s) Size: " + size;
+    }
 }

@@ -115,6 +115,19 @@ public class Pizza
 
     }
 
+    @Override
+    public String toString()
+    {
+        return "Pizza(s):\n"
+                + "Pizza Size: " + pizzaSize
+                + "\nCrust Type: " + crust
+                + "\nMeat(s): " + meats
+                + "\nCheese(s): " + cheeses
+                + "\nTopping(s) " + toppings
+                + "\nSauce(s) " + sauces
+                + "\nSide(s) " + sides;
+    }
+
     public static class Builder
     {
         private PizzaSize pizzaSize;
@@ -180,6 +193,5 @@ public class Pizza
         }
 
     }
-
 }
 

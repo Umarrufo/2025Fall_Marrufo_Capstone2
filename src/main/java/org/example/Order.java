@@ -27,6 +27,8 @@ public class Order
     }
 
     public Order() {
+        this.date = LocalDate.now();
+        this.time = LocalTime.now();
     }
 
     public LocalDate getDate() {

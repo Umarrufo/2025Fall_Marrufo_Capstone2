@@ -2,6 +2,8 @@ package org.example;
 
 import org.example.ENUMS.*;
 
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -144,9 +146,21 @@ public class UserInterface
             System.out.println("Please Select Your Primary Meat:");
             builder.setMeats(List.of(Meat.valueOf(scanner.nextLine().toUpperCase())));
 
-            System.out.println("Select Another Meat or Press (Enter) to Continue");
-            //Figure out how to charge more
-            builder.setMeats(List.of(Meat.valueOf(scanner.nextLine().toUpperCase())));
+            boolean extraMeatsRunning = true;
+            while (extraMeatsRunning)
+            {
+                System.out.println("Select Another Meat or Press (Enter) to Continue");
+                String extraMeatInput = scanner.nextLine();
+                if(extraMeatInput.isBlank())
+                {
+                    extraMeatsRunning = false;
+                }
+                else
+                {
+                    builder.setMeats(List.of(Meat.valueOf(scanner.nextLine().toUpperCase())));
+                }
+            }
+
 
             System.out.println(" ");
             System.out.println("------------------------------------------------------------");
@@ -274,8 +288,18 @@ public class UserInterface
 
     public void processGetCheckout()
     {
-        System.out.println("Your Order:");
-        System.out.println("Pizza: ");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+
+        System.out.println("Date: " + order.getDate());
+        System.out.println("Time: " + order.getTime().format(timeFormatter));
+
+        order.getPizzas().forEach(System.out::println);
+
+        order.getDrinks().forEach(System.out::println);
+
+        System.out.println("Garlic Knots: " + order.getGarlicKnots());
+
+        System.out.println("Total: $" + order.orderPrice());
     }
 
     public void processGetCancelOrder()
