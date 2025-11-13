@@ -27,11 +27,13 @@ public class FileManager
             {
                 bufferedWriter.write("Pizza Size: " + pizza.getPizzaSize()
                         + "\nCrust: " + pizza.getCrust()
-                        + "\nMeats: " + pizza.getMeats()
-                        + "\nCheeses: " + pizza.getCheeses()
+                        + "\nMeat: " + pizza.getMeats()
+                        + "\nExtra Meat: " + pizza.isExtraMeat()
+                        + "\nCheese: " + pizza.getCheeses()
+                        + "\nExtra Cheese: " + pizza.isExtraCheese()
                         + "\nToppings: " + pizza.getToppings()
-                        + "\nSauces: " + pizza.getSauces()
-                        + "\nSides: " + pizza.getSides()
+                        + "\nSauce: " + pizza.getSauces()
+                        + "\nSide: " + pizza.getSides()
                         + "\nPrice: $" + pizza.getPrice());
                 bufferedWriter.newLine();
             }
@@ -51,6 +53,7 @@ public class FileManager
             }
 
             bufferedWriter.write("Total: $" + order.orderPrice());
+            bufferedWriter.newLine();
             bufferedWriter.newLine();
 
             bufferedWriter.close();

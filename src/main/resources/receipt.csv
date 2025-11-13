@@ -1,14 +1,16 @@
-Date: 2025-11-13	Time: 13:49
-Garlic Knots: 2	Price: $3.0
 
-Date: 2025-11-13	Time: 13:53
-Pizza Size: MEDIUM
+Date: 2025-11-13	Time: 16:04
+Pizza Size: SMALL
 Crust: THIN
-Meats: [HAM]
-Cheeses: [RICOTTA]
+Meat: [PEPPERONI]
+Extra Meat: true
+Cheese: [MOZZARELLA]
+Extra Cheese: false
 Toppings: [BASIL]
-Sauces: [BBQ]
-Sides: [PARMESAN]
-Price: $15.5
+Sauce: [MARINARA]
+Side: [PARMESAN]
+Price: $10.75
+Drink Size : LARGE		Price: $3.0
+Garlic Knots: 1		Price: $1.5
+Total: $15.25
 
-Total: $15.5

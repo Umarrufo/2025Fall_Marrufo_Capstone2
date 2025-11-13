@@ -253,7 +253,7 @@ public class UserInterface
         boolean isAddGarlicKnotsRunning = true;
 
         while (isAddGarlicKnotsRunning) {
-            System.out.printf("%-20s %-15s %-15s %-15s%n", "Garlic Knots", "1.50 Each", "", "");
+            System.out.printf("\n%-20s %-15s %-15s %-15s%n", "Garlic Knots", "1.50 Each", "", "");
             System.out.println("------------------------------------------------------------");
 
             System.out.println("How many Garlic Knots would you Like?");
@@ -272,6 +272,8 @@ public class UserInterface
         Scanner scanner = new Scanner(System.in);
         FileManager fileManager = new FileManager();
 
+        System.out.println();
+
         order.getPizzas().forEach(System.out::println);
 
         order.getDrinks().forEach(System.out::println);
@@ -283,7 +285,7 @@ public class UserInterface
         boolean checkOut = true;
         while(checkOut)
         {
-            System.out.println("Choose an Option:");
+            System.out.println("\nChoose an Option:");
             System.out.println("1) Confirm Order");
             System.out.println("2) Cancel Order");
             String checkOutInput = scanner.nextLine();
