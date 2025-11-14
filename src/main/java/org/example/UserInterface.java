@@ -183,12 +183,10 @@ public class UserInterface
             System.out.printf("%-20s %-15s %-15s %-15s%n", "- Anchovies", "", "", "");
             System.out.println("------------------------------------------------------------");
 
-            System.out.println("Press Enter When Done");
-
             boolean addToppingsInput = true;
             while(addToppingsInput)
             {
-                System.out.println("Please Select Your Topping(s): ");
+                System.out.println("Please Select Your Topping(s) or Press Enter: ");
                 String input = scanner.nextLine().toUpperCase();
                 if (input.isBlank())
                 {
