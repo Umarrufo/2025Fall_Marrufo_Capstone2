@@ -135,7 +135,7 @@ public class UserInterface
             System.out.printf("%-15s %-15s %-15s %-15s%n", "Extra Meat", ".50", "1.00", "1.50");
             System.out.println("------------------------------------------------------------");
 
-            System.out.println("Please Select Your Primary Meat:");
+            System.out.println("Please Select Your Meat:");
             builder.setMeats(List.of(Meat.valueOf(scanner.nextLine().toUpperCase())));
 
             System.out.println("Would you like Extra Meat?(Yes/No)");
@@ -158,7 +158,7 @@ public class UserInterface
             System.out.printf("%-15s %-15s %-15s %-15s%n", "Extra Cheese", ".30", ".60", ".90");
             System.out.println("------------------------------------------------------------");
 
-            System.out.println("Please Select Your Primary Cheese");
+            System.out.println("Please Select Your Cheese");
             builder.setCheeses(List.of(Cheese.valueOf(scanner.nextLine().toUpperCase())));
 
             System.out.println("Would you like Extra Cheese?(Yes/No)");
@@ -183,8 +183,23 @@ public class UserInterface
             System.out.printf("%-20s %-15s %-15s %-15s%n", "- Anchovies", "", "", "");
             System.out.println("------------------------------------------------------------");
 
-            System.out.println("Please Select Your Toppings: ");
-            builder.setToppings(List.of(Topping.valueOf(scanner.nextLine().toUpperCase())));
+            System.out.println("Press Enter When Done");
+
+            boolean addToppingsInput = true;
+            while(addToppingsInput)
+            {
+                System.out.println("Please Select Your Topping(s): ");
+                String input = scanner.nextLine().toUpperCase();
+                if (input.isBlank())
+                {
+                    addToppingsInput = false;
+                }
+                else
+                {
+                    Topping topping = Topping.valueOf(input);
+                    builder.addToppings(topping);
+                }
+            }
 
             System.out.println("\n------------------------------------------------------------");
             System.out.printf("%-20s %-10s %-10s %-10s%n", "Sauces", "8\"", "12\"", "16\"");
@@ -198,7 +213,7 @@ public class UserInterface
             System.out.printf("%-20s%n", "- Olive Oil");
             System.out.println("------------------------------------------------------------");
 
-            System.out.println("Please Select Your Sauces: ");
+            System.out.println("Please Select Your Sauce: ");
             builder.setSauces(List.of(Sauce.valueOf(scanner.nextLine().toUpperCase())));
 
             System.out.println("\n------------------------------------------------------------");
@@ -209,7 +224,7 @@ public class UserInterface
             System.out.printf("%-20s%n", "- Parmesan");
             System.out.println("------------------------------------------------------------");
 
-            System.out.println("Please Select Your Sides: ");
+            System.out.println("Please Select Your Side: ");
             builder.setSides(List.of(Side.valueOf(scanner.nextLine().toUpperCase())));
 
             Pizza newPizza = builder.build();
@@ -256,10 +271,9 @@ public class UserInterface
             System.out.printf("\n%-20s %-15s %-15s %-15s%n", "Garlic Knots", "1.50 Each", "", "");
             System.out.println("------------------------------------------------------------");
 
-            System.out.println("How many Garlic Knots would you Like?");
+            System.out.println("How Many Garlic Knots Would You Like?");
             int numOfGarlicKnots = scanner.nextInt();
             scanner.nextLine();
-
 
             order.addGarlicKnot(numOfGarlicKnots);
 
@@ -278,9 +292,12 @@ public class UserInterface
 
         order.getDrinks().forEach(System.out::println);
 
-        System.out.println("Garlic Knots: " + order.getGarlicKnots());
+        if (order.getGarlicKnots() > 0)
+        {
+            System.out.println("\nGarlic Knots: " + order.getGarlicKnots());
+        }
 
-        System.out.println("Total: $" + order.orderPrice());
+        System.out.println("\nTotal: $" + order.orderPrice());
 
         boolean checkOut = true;
         while(checkOut)

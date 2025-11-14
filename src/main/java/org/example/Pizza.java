@@ -122,7 +122,7 @@ public class Pizza
                 + "Pizza Size: " + pizzaSize
                 + "\nCrust Type: " + crust
                 + "\nMeat: " + meats
-                + "\nExtra Meats: " + extraMeat
+                + "\nExtra Meat: " + extraMeat
                 + "\nCheese: " + cheeses
                 + "\nExtra Cheese: " + extraCheese
                 + "\nTopping(s): " + toppings //Loop through toppings
@@ -143,19 +143,10 @@ public class Pizza
         private List<Sauce> sauces;
         private List<Side> sides;
 
-        public Builder(PizzaSize pizzaSize, Crust crust, List<Meat> meats, boolean extraMeat, List<Cheese> cheeses, boolean extraCheese, List<Topping> toppings, List<Sauce> sauces, List<Side> sides) {
-            this.pizzaSize = pizzaSize;
-            this.crust = crust;
-            this.meats = meats;
-            this.extraMeat = extraMeat;
-            this.cheeses = cheeses;
-            this.extraCheese = extraCheese;
-            this.toppings = toppings;
-            this.sauces = sauces;
-            this.sides = sides;
-        }
 
-        public Builder(){
+        public Builder()
+        {
+            this.toppings = new ArrayList<>();
         }
 
         public void setPizzaSize(PizzaSize pizzaSize) {

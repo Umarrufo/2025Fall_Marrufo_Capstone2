@@ -1,0 +1,23 @@
+Pizza Size: SMALL
+Crust: THIN
+Meat: [HAM]
+Extra Meat: false
+Cheese: [RICOTTA]
+Extra Cheese: false
+Toppings: [ONIONS, BASIL, SPINACH, PINEAPPLE]
+Sauce: [BBQ]
+Side: [PARMESAN]
+Price: $10.25
+Pizza Size: LARGE
+Crust: THIN
+Meat: [PEPPERONI]
+Extra Meat: true
+Cheese: [BUFFALO]
+Extra Cheese: false
+Toppings: [OLIVES, ANCHOVIES]
+Sauce: [BBQ]
+Side: [PARMESAN]
+Price: $23.25
+Drink Size : LARGE		Price: $3.0
+Garlic Knots: 4		Price: $6.0
+Total: $42.5
