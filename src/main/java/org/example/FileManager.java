@@ -21,6 +21,7 @@ public class FileManager
             // [5] extra cheese, [6] = toppings, [7] = sauce, [8] = side
             for(Pizza pizza : order.getPizzas())
             {
+                bufferedWriter.newLine();
                 bufferedWriter.write("Pizza Size: " + pizza.getPizzaSize()
                         + "\nCrust: " + pizza.getCrust()
                         + "\nMeat: " + pizza.getMeats()
