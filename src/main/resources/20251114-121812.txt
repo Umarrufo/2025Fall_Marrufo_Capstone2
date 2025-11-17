@@ -1,0 +1,28 @@
+
+Pizza Size: LARGE
+Crust: THIN
+Meat: [PEPPERONI]
+Extra Meat: true
+Cheese: [MOZZARELLA]
+Extra Cheese: false
+Toppings: [BASIL]
+Sauce: [MARINARA]
+Side: [PARMESAN]
+Price: $23.25
+
+Pizza Size: SMALL
+Crust: THIN
+Meat: [HAM]
+Extra Meat: false
+Cheese: [BUFFALO]
+Extra Cheese: false
+Toppings: []
+Sauce: [BBQ]
+Side: [PARMESAN]
+Price: $10.25
+
+Drink Size : LARGE		Price: $3.0
+
+Garlic Knots: 3		Price: $4.5
+
+Total: $41.0

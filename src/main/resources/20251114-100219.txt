@@ -1,0 +1,36 @@
+Pizza Size: LARGE
+Crust: CAULIFLOWER
+Meat: [MEATBALL]
+Extra Meat: true
+Cheese: [BUFFALO]
+Extra Cheese: true
+Toppings: [ANCHOVIES, ONIONS, OLIVES, BASIL]
+Sauce: [BBQ]
+Side: [PARMESAN]
+Price: $24.15
+Pizza Size: LARGE
+Crust: REGULAR
+Meat: [PEPPERONI]
+Extra Meat: true
+Cheese: [MOZZARELLA]
+Extra Cheese: false
+Toppings: []
+Sauce: [MARINARA]
+Side: [PARMESAN]
+Price: $23.25
+Pizza Size: SMALL
+Crust: THIN
+Meat: [HAM]
+Extra Meat: false
+Cheese: [RICOTTA]
+Extra Cheese: false
+Toppings: []
+Sauce: [BBQ]
+Side: [PARMESAN]
+Price: $10.25
+
+Drink Size : LARGE		Price: $3.0
+
+Garlic Knots: 4		Price: $6.0
+
+Total: $66.65

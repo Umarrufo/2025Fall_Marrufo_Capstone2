@@ -1,0 +1,19 @@
+
+Pizza Size: MEDIUM
+Crust: THIN
+Meat: [HAM]
+Extra Meat: false
+Cheese: [MOZZARELLA]
+Extra Cheese: true
+Toppings: [BASIL, SPINACH]
+Sauce: [ALFREDO]
+Side: [PARMESAN]
+Price: $16.1
+
+Drink Size : MEDIUM		Price: $2.5
+
+Drink Size : LARGE		Price: $3.0
+
+Garlic Knots: 2		Price: $3.0
+
+Total: $24.6
